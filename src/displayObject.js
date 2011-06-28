@@ -22,12 +22,21 @@ STL.CanvasDisplayObject = function() {
 	 */
 	this.parent				= null;
 
+	//Initialize
+	this.initialize();
+
 	/**
 	 * ---------------------------------
 	 * PUBLIC FUNCTIONS
 	 * ---------------------------------
 	 */
 
+	/**
+	 * Initializes the class
+	 */
+	this.initialize = function() {
+
+	};
 	/**
 	 * Adds a child to the display object
 	 *
@@ -55,7 +64,6 @@ STL.CanvasDisplayObject = function() {
 		}
 
 	};
-	
 	/**
 	 * Removes a child
 	 *
@@ -75,14 +83,12 @@ STL.CanvasDisplayObject = function() {
 
 		}
 	};
-
 	/**
 	 * Draws on the stage
 	 */
-	this.draw = function(){
+	this.draw = function() {
 		_draw();
 	};
-	
 	/**
 	 * Returns an array with all the children
 	 *
@@ -91,14 +97,14 @@ STL.CanvasDisplayObject = function() {
 	this.getChildren = function() {
 		return _children;
 	};
-	
 	/**
 	 * ---------------------------------
 	 * PRIVATE FUNCTIONS
 	 * ---------------------------------
 	 */
-	
-	function _draw(){
-		
+
+	function _draw() {
+
 	}
+
 };
