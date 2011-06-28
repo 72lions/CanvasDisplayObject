@@ -23,6 +23,12 @@ STL.CanvasDisplayObject = function() {
 	this.parent				= null;
 
 	/**
+	 * ---------------------------------
+	 * PUBLIC FUNCTIONS
+	 * ---------------------------------
+	 */
+
+	/**
 	 * Adds a child to the display object
 	 *
 	 * @param {CanvasDisplayObject} child The display object to add as a child
@@ -69,22 +75,30 @@ STL.CanvasDisplayObject = function() {
 
 		}
 	};
-	
-	/**
-	 * Returns a child by giving it's name
-	 *
-	 * @param {String} name The name of the child
-	 */
-	this.getChildByName = function(name) {
 
+	/**
+	 * Public function
+	 */
+	this.draw = function(){
+		_draw();
 	};
 	
 	/**
 	 * Returns an array with all the children
 	 *
-	 * @returns {CanvasDisplayObject[]} The array with all the children
+	 * @returns {[CanvasDisplayObject]} The array with all the children
 	 */
 	this.getChildren = function() {
 		return _children;
 	};
+	
+	/**
+	 * ---------------------------------
+	 * PRIVATE FUNCTIONS
+	 * ---------------------------------
+	 */
+	
+	function _draw(){
+		
+	}
 };
