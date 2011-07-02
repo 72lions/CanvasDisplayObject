@@ -5,17 +5,24 @@
  * @author Thodoris Tsiridis
  */
 
-var STL					= STL || {};
-STL.CanvasDisplayObject = function() {
+var STL						= STL || {};
+STL.CanvasDisplayObject		= function(context) {
 
 	var _children			= [],
-	_translateX				= 0,
-	_translateY				= 0;
+	_ctx					= context,
+	_draw					= null;
 
 	/**
 	 * The name of the display object
 	 */
 	this.name				= '';
+	this.x					= 0;
+	this.y					= 0;
+	this.rotation			= 0;
+
+	this._originX			= 0;
+	this._originY			= 0;
+	this._originRotation	= 0;
 
 	/**
 	 * The parent object
@@ -58,6 +65,11 @@ STL.CanvasDisplayObject = function() {
 			//Set the parent of the child
 			child.parent = this;
 
+			//Set the origin from the parent
+			child._originX = this.x;
+			child._originY = this.y;
+			child._originRotation = this.rotation;
+
 			//Push the child in the array
 			_children.push( child );
 
@@ -87,7 +99,15 @@ STL.CanvasDisplayObject = function() {
 	 * Draws on the stage
 	 */
 	this.draw = function() {
+
 		_draw();
+
+		//Invoke the draw function for each child
+		for(var d = 0; d < _children.length; d++) {
+			_children[d].draw();
+		}
+
+		d = null;
 	};
 	/**
 	 * Returns an array with all the children
@@ -102,9 +122,16 @@ STL.CanvasDisplayObject = function() {
 	 * PRIVATE FUNCTIONS
 	 * ---------------------------------
 	 */
+	_draw = function() {
 
-	function _draw() {
+		//Save the current translation, rotation
+		_ctx.save();
 
-	}
+		//Rotate and translate
+		_ctx.translate(this._originX + this.x, this._originY + this.y);
+		_ctx.rotate(this._originRotation + this.rotation);
 
+		//Restore the translation, rotation
+		_ctx.restore();
+	};
 };
