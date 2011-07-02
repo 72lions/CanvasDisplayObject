@@ -9,8 +9,7 @@ var STL						= STL || {};
 STL.CanvasDisplayObject		= function(context) {
 
 	var _children			= [],
-	_ctx					= context,
-	_draw					= null;
+	_ctx					= context;
 
 	/**
 	 * The name of the display object
@@ -100,14 +99,6 @@ STL.CanvasDisplayObject		= function(context) {
 	 */
 	this.draw = function() {
 
-		_draw();
-
-		//Invoke the draw function for each child
-		for(var d = 0; d < _children.length; d++) {
-			_children[d].draw();
-		}
-
-		d = null;
 	};
 	/**
 	 * Returns an array with all the children
@@ -122,7 +113,7 @@ STL.CanvasDisplayObject		= function(context) {
 	 * PRIVATE FUNCTIONS
 	 * ---------------------------------
 	 */
-	_draw = function() {
+	this._update = function() {
 
 		//Save the current translation, rotation
 		_ctx.save();
@@ -131,7 +122,17 @@ STL.CanvasDisplayObject		= function(context) {
 		_ctx.translate(this._originX + this.x, this._originY + this.y);
 		_ctx.rotate(this._originRotation + this.rotation);
 
+		this.draw();
+
 		//Restore the translation, rotation
 		_ctx.restore();
+		
+		//Invoke the draw function for each child
+		for(var d = 0; d < _children.length; d++) {
+			_children[d]._update();
+		}
+
+		d = null;
+				
 	};
 };
