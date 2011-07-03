@@ -19,10 +19,6 @@ STL.CanvasDisplayObject     = function(context) {
     this.y                  = 0;
     this.rotation           = 0;
 
-    this._originX           = 0;
-    this._originY           = 0;
-    this._originRotation    = 0;
-
     /**
      * The parent object
      */
@@ -63,11 +59,6 @@ STL.CanvasDisplayObject     = function(context) {
 
             //Set the parent of the child
             child.parent = this;
-
-            //Set the origin from the parent
-            child._originX = this.x;
-            child._originY = this.y;
-            child._originRotation = this.rotation;
 
             //Push the child in the array
             _children.push( child );
@@ -119,13 +110,10 @@ STL.CanvasDisplayObject     = function(context) {
         _ctx.save();
 
         //Rotate and translate
-        _ctx.translate(this._originX + this.x, this._originY + this.y);
-        _ctx.rotate(this._originRotation + this.rotation);
+        _ctx.translate(this.x, this.y);
+        _ctx.rotate(this.rotation);
 
         this.draw();
-
-        //Restore the translation, rotation
-        _ctx.restore();
 
         //Invoke the draw function for each child
         for(var d = 0; d < _children.length; d++) {
@@ -134,5 +122,7 @@ STL.CanvasDisplayObject     = function(context) {
 
         d = null;
 
+        //Restore the translation, rotation
+        _ctx.restore();
     };
 };
