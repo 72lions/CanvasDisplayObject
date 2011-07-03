@@ -1,7 +1,6 @@
 This is a javascript library that simulates a Display List in Canvas
 
 <code>
-
     var canvas = document.getElementById('world');
     var context = canvas.getContext('2d');
     
