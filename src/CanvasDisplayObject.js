@@ -12,19 +12,22 @@ STL.CanvasDisplayObject     = function(context) {
     _ctx                    = context;
 
     /**
-     * The name of the display object
+     * Public members
      */
     this.name               = '';
+    
     this.x                  = 0;
     this.y                  = 0;
     this.rotation           = 0;
     this.scaleX             = 1;
     this.scaleY             = 1;
+    this.visible            = true;
+    
     this._originX           = 0;
     this._originY           = 0;
     this._originRotation    = 0;
     this._originScaleX      = 1;
-    this._originScaleY      = 1; 
+    this._originScaleY      = 1;
 
     /**
      * The parent object
@@ -35,21 +38,13 @@ STL.CanvasDisplayObject     = function(context) {
      * ---------------------------------
      * PUBLIC FUNCTIONS
      * ---------------------------------
-     */
-
-    /**
-     * Initializes the class
-     */
-    this.initialize = function() {
-
-    };
-    /**
+     * 
      * Adds a child to the display object
      *
      * @param {CanvasDisplayObject} child The display object to add as a child
      */
     this.addChild = function(child) {
-        //console.log('Adding child', child.name)
+
         //Check if the child doesn't already exist
         if (_children.indexOf(child) === - 1) {
 
@@ -66,10 +61,10 @@ STL.CanvasDisplayObject     = function(context) {
             child._originX = this._originX + this.x;
             child._originY = this._originY + this.y;
             child._originRotation = this._originRotation + this.rotation;
-            
+
             //Push the child in the array
             _children.push( child );
-            
+
         }
 
     };
@@ -92,7 +87,6 @@ STL.CanvasDisplayObject     = function(context) {
 
         }
     };
-
     /**
      * Returns an array with all the children
      *
@@ -102,40 +96,40 @@ STL.CanvasDisplayObject     = function(context) {
         return _children;
     };
     /**
-     * ---------------------------------
-     * PRIVATE FUNCTIONS
-     * ---------------------------------
+     * 
      */
     this._update = function() {
         
-        //Save the current translation, rotation
-        _ctx.save();
-
-        //Translate Scale and Rotate        
-        _ctx.translate(this.x, this.y);
-        _ctx.scale(this.scaleX,this.scaleY);
-        _ctx.rotate(this.rotation);
-        
-        this.draw();
-        
-        //Invoke the update function for each child
-        for(var d = 0; d < _children.length; d++) {
-           
-            _children[d]._update();            
-        }
-
-        //Restore the translation, rotation
-        _ctx.restore();
-        
-        d = null;
-    };
+        if(this.visible !== false){
+            
+            //Save the current translation, rotation
+            _ctx.save();
     
-    this.initialize();
-};
+            //Translate Scale and Rotate
+            _ctx.translate(this.x, this.y);
+            _ctx.scale(this.scaleX,this.scaleY);
+            _ctx.rotate(this.rotation);
+    
+            this.draw();
+    
+            //Invoke the update function for each child
+            for(var d = 0; d < _children.length; d++) {
+    
+                _children[d]._update();
+            }
+    
+            //Restore the translation, rotation
+            _ctx.restore();
+    
+            d = null;
+        
+        }
+    };
 
+};
 /**
  * Generic function for overwritting and adding the your code
  */
-STL.CanvasDisplayObject.prototype.draw = function(){
+STL.CanvasDisplayObject.prototype.draw = function() {
 
 }
