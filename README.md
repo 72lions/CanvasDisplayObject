@@ -1,1 +1,1 @@
-This is a javascript library that simulates a Display List in Canvas. Check the examples to see how you can use it
+This is a javascript library that simulates a Display List in Canvas. Check the examples https://github.com/72lions/CanvasDisplayList/tree/master/dist/examples to see how you can use it
