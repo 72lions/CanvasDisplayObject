@@ -47,7 +47,7 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect.draw = function() {
         context.fillStyle = "rgb(200,0,0)";
-        context.fillRect (0,0, 100, 100);
+        context.fillRect(0,0, 100, 100);
     }
     //Creating a new display object
     rect2 = new STL.CanvasDisplayObject(context);
@@ -62,8 +62,8 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect2.draw = function() {
         context.fillStyle = "rgb(150,0,150)";
-        context.fillRect (-13, -13, 26, 26);
-    }
+        context.fillRect(-13, -13, 26, 26);
+    };
     //Creating a new display object
     rect3 = new STL.CanvasDisplayObject(context);
     rect3.name = 'Blue Rectangular';
@@ -75,8 +75,8 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect3.draw = function() {
         context.fillStyle = "rgb(0,0,255)";
-        context.fillRect (-13, -13, 26, 26);
-    }
+        context.fillRect(-13, -13, 26, 26);
+    };
     //Creating a new display object
     rect4 = new STL.CanvasDisplayObject(context);
     rect4.name = 'Dark Green Rectangular';
@@ -88,8 +88,8 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect4.draw = function() {
         context.fillStyle = "rgb(50,100,20)";
-        context.fillRect (-13, -13, 26, 26);
-    }
+        context.fillRect(-13, -13, 26, 26);
+    };
     //Creating a new display object
     rect5 = new STL.CanvasDisplayObject(context);
     rect5.name = 'Green Rectangular';
@@ -101,8 +101,8 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect5.draw = function() {
         context.fillStyle = "rgb(0,255,0)";
-        context.fillRect (-13, -13, 26, 26);
-    }
+        context.fillRect(-13, -13, 26, 26);
+    };
     //Add the first object into the stage
     stage.addChild(rect);
 
@@ -121,7 +121,7 @@ var initialize = function() {
 
 };
 var draw = function() {
-    t++
+    t++;
     //Clear the canvas
     canvas.width = CANVAS_WIDTH;
 
