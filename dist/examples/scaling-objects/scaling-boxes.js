@@ -38,26 +38,25 @@ var initialize = function() {
     //Creating a new display object
     rect = new STL.CanvasDisplayObject(context);
     rect.name = 'Rectangular';
-    rect.y = 300;
+    rect.y = 250;
+    rect.x = 350;
         
     //Scaling the new display object
-    rect.scaleX = 1.5;
-    rect.scaleY = 1.5;
+    rect.scaleX = 1;
+    rect.scaleY = 1;
     
     //Overwrite the draw function of the display object
     rect.draw = function() {
         context.fillStyle = "rgb(200,0,0)";
-        context.fillRect (0,0, 100, 100);
+        context.fillRect (-50,-50, 100, 100);
     }
     //Creating a new display object
     rect2 = new STL.CanvasDisplayObject(context);
     rect2.name = 'Purple Rectangular';
     
     //Positioning and scaling the new object
-    rect2.x = 0;
-    rect2.y = 0;
-    rect2.scaleX = 1.5;
-    rect2.scaleY = 1.5;
+    rect2.x = -50;
+    rect2.y = -50;
 
     //Overwrite the draw function of the display object
     rect2.draw = function() {
@@ -69,8 +68,8 @@ var initialize = function() {
     rect3.name = 'Blue Rectangular';
 
     //Positioning and scaling the new object
-    rect3.x = 100;
-    rect3.y = 0;
+    rect3.x = 50;
+    rect3.y = -50;
 
     //Overwrite the draw function of the display object
     rect3.draw = function() {
@@ -82,8 +81,8 @@ var initialize = function() {
     rect4.name = 'Dark Green Rectangular';
 
     //Positioning and scaling the new object
-    rect4.x = 0;
-    rect4.y = 100;
+    rect4.x = -50;
+    rect4.y = 50;
 
     //Overwrite the draw function of the display object
     rect4.draw = function() {
@@ -95,8 +94,8 @@ var initialize = function() {
     rect5.name = 'Green Rectangular';
 
     //Positioning and scaling the new object
-    rect5.x = 100;
-    rect5.y = 100;
+    rect5.x = 50;
+    rect5.y = 50;
 
     //Overwrite the draw function of the display object
     rect5.draw = function() {
@@ -126,15 +125,14 @@ var draw = function() {
     canvas.width = CANVAS_WIDTH;
 
     //Move the first object
-    rect.x = 400 + (-Math.cos(t * Math.PI / 180) * 0.5) * 500;
-
-    //Rotate all the objects
-    rect.rotation += 0.01;
+    //rect.x = 400 + (-Math.cos(t * Math.PI / 180) * 0.5) * 500;
+    rect.scaleX = rect.scaleY = -Math.cos(t * Math.PI / 180) * 0.5 + 1;
+    
     rect2.rotation += 0.1;
     rect3.rotation += 0.1;
     rect4.rotation += 0.1;
     rect5.rotation += 0.1;
-
+    
     //Update the stage
     stage._update();
 
