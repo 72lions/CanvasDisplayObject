@@ -9,7 +9,8 @@ var STL                     = STL || {};
 STL.CanvasDisplayObject     = function(context) {
 
     var _children           = [],
-    _ctx                    = context;
+    _ctx                    = context,
+    _alphaDefinedByUser     = 1;
 
     /**
      * Public members
@@ -45,7 +46,7 @@ STL.CanvasDisplayObject     = function(context) {
      * @param {CanvasDisplayObject} child The display object to add as a child
      */
     this.addChild = function(child) {
-
+        
         //Check if the child doesn't already exist
         if (_children.indexOf(child) === - 1) {
 
@@ -102,7 +103,7 @@ STL.CanvasDisplayObject     = function(context) {
     this.update = function() {
         
         if(this.visible !== false){
-            
+                
             //Save the current translation, rotation
             _ctx.save();
     
@@ -112,12 +113,13 @@ STL.CanvasDisplayObject     = function(context) {
             _ctx.rotate(this.rotation);
             _ctx.globalAlpha = this.alpha;
             
+            
             this.draw();
     
             //Invoke the update function for each child
             var d = _children.length-1;
             
-            while(d >= 0){
+            while(d >= 0){                
                 
                 _children[d].update();
                 
