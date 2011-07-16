@@ -48,7 +48,7 @@ var initialize = function() {
     //Overwrite the draw function of the display object
     rect.draw = function() {
         context.fillStyle = "rgb(200,0,0)";
-        context.fillRect (-50,-50, 100, 100);
+        context.fillRect(-50,-50, 100, 100);
     };
     //Creating a new display object
     rect2 = new STL.CanvasDisplayObject(context);
@@ -135,7 +135,7 @@ var draw = function() {
     rect5.rotation += 0.1;
 
     //Update the stage
-    stage._update();
+    stage.update();
 
-}
+};
 initialize();

@@ -22,6 +22,7 @@ STL.CanvasDisplayObject     = function(context) {
     this.scaleX             = 1;
     this.scaleY             = 1;
     this.visible            = true;
+    this.alpha              = 1;
     
     this._originX           = 0;
     this._originY           = 0;
@@ -96,9 +97,9 @@ STL.CanvasDisplayObject     = function(context) {
         return _children;
     };
     /**
-     * 
+     * Updates the object
      */
-    this._update = function() {
+    this.update = function() {
         
         if(this.visible !== false){
             
@@ -109,13 +110,18 @@ STL.CanvasDisplayObject     = function(context) {
             _ctx.translate(this.x, this.y);
             _ctx.scale(this.scaleX,this.scaleY);
             _ctx.rotate(this.rotation);
-    
+            _ctx.globalAlpha = this.alpha;
+            
             this.draw();
     
             //Invoke the update function for each child
-            for(var d = 0; d < _children.length; d++) {
-    
-                _children[d]._update();
+            var d = _children.length-1;
+            
+            while(d >= 0){
+                
+                _children[d].update();
+                
+                d--;
             }
     
             //Restore the translation, rotation
@@ -132,4 +138,4 @@ STL.CanvasDisplayObject     = function(context) {
  */
 STL.CanvasDisplayObject.prototype.draw = function() {
 
-}
+};

@@ -48,7 +48,7 @@ var initialize = function() {
     rect.draw = function() {
         context.fillStyle = "rgb(200,0,0)";
         context.fillRect(0,0, 100, 100);
-    }
+    };
     //Creating a new display object
     rect2 = new STL.CanvasDisplayObject(context);
     rect2.name = 'Purple Rectangular';
@@ -136,7 +136,7 @@ var draw = function() {
     rect5.rotation += 0.1;
 
     //Update the stage
-    stage._update();
+    stage.update();
 
-}
+};
 initialize();
