@@ -131,9 +131,13 @@ var draw = function() {
     //Rotate all the objects
     rect.rotation += 0.01;
     rect2.rotation += 0.1;
+    rect2.scaleX = rect2.scaleY = -Math.cos(t * Math.PI / 180) + 0.5;
     rect3.rotation += 0.1;
+    rect3.scaleX = rect3.scaleY = -Math.cos(t * Math.PI / 180) * 2 + 0.5;
     rect4.rotation += 0.1;
+    rect4.scaleX = rect4.scaleY = -Math.cos(t * Math.PI / 180) * 1.5 + 0.5;
     rect5.rotation += 0.1;
+    rect5.scaleX = rect5.scaleY = -Math.cos(t * Math.PI / 180) * 3 + 0.5;
 
     //Update the stage
     stage.update();
