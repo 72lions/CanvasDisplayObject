@@ -38,8 +38,8 @@ var initialize = function() {
     //Creating a new display object
     rect = new STL.CanvasDisplayObject(context);
     rect.name = 'Rectangular';
-    rect.y = 250;
-    rect.x = 350;
+    rect.y = 300;
+    rect.x = 450;
 
     //Scaling the new display object
     rect.scaleX = 1;

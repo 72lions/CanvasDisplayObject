@@ -130,6 +130,7 @@ var draw = function() {
 
     //Rotate all the objects
     rect.rotation += 0.01;
+    rect.scaleX = rect.scaleY = -Math.cos(t * Math.PI / 180) + 2;
     rect2.rotation += 0.1;
     rect2.scaleX = rect2.scaleY = -Math.cos(t * Math.PI / 180) + 0.5;
     rect3.rotation += 0.1;
