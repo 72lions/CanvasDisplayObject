@@ -25,12 +25,6 @@ STL.CanvasDisplayObject     = function(context) {
     this.visible            = true;
     this.alpha              = 1;
 
-    this._originX           = 0;
-    this._originY           = 0;
-    this._originRotation    = 0;
-    this._originScaleX      = 1;
-    this._originScaleY      = 1;
-
     /**
      * The parent object
      */
