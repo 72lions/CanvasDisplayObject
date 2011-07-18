@@ -109,7 +109,7 @@ STL.CanvasDisplayObject     = function(context) {
             //Invoke the update function for each child
             var d = 0;
 
-            while(d <= _children.length-1) {
+            while(d < _children.length) {
 
                 _children[d].update();
 
