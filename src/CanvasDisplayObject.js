@@ -6,10 +6,9 @@
  */
 
 var STL                     = STL || {};
-STL.CanvasDisplayObject     = function(context) {
+STL.CanvasDisplayObject     = function() {
 
     var _children           = [],
-    _ctx                    = context,
     _alphaDefinedByUser     = 1;
 
     /**
@@ -90,19 +89,21 @@ STL.CanvasDisplayObject     = function(context) {
     };
     /**
      * Updates the object
+     * 
+     * @param {CanvasContext} ctx The context on which everything will be drawn
      */
-    this.update = function() {
+    this.update = function(ctx) {
 
         if(this.visible !== false) {
 
             //Save the current translation, rotation
-            _ctx.save();
+            ctx.save();
 
             //Translate Scale and Rotate
-            _ctx.translate(this.x, this.y);
-            _ctx.scale(this.scaleX,this.scaleY);
-            _ctx.rotate(this.rotation);
-            _ctx.globalAlpha = this.alpha;
+            ctx.translate(this.x, this.y);
+            ctx.scale(this.scaleX,this.scaleY);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = this.alpha;
 
             this.draw();
 
@@ -111,13 +112,13 @@ STL.CanvasDisplayObject     = function(context) {
 
             while(d >= 0) {
 
-                _children[d].update();
+                _children[d].update(ctx);
 
                 d--;
             }
 
             //Restore the translation, rotation
-            _ctx.restore();
+            ctx.restore();
 
             d = null;
 

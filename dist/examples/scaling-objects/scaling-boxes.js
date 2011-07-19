@@ -28,7 +28,7 @@ var initialize = function() {
     context = canvas.getContext('2d');
 
     //Create the first object that will call it stage
-    stage = new STL.CanvasDisplayObject(context);
+    stage = new STL.CanvasDisplayObject();
     stage.name = 'Stage';
 
     //Moving the stage
@@ -36,7 +36,7 @@ var initialize = function() {
     stage.y = 0;
 
     //Creating a new display object
-    rect = new STL.CanvasDisplayObject(context);
+    rect = new STL.CanvasDisplayObject();
     rect.name = 'Rectangular';
     rect.y = 300;
     rect.x = 450;
@@ -51,7 +51,7 @@ var initialize = function() {
         context.fillRect(-50,-50, 100, 100);
     };
     //Creating a new display object
-    rect2 = new STL.CanvasDisplayObject(context);
+    rect2 = new STL.CanvasDisplayObject();
     rect2.name = 'Purple Rectangular';
 
     //Positioning and scaling the new object
@@ -64,7 +64,7 @@ var initialize = function() {
         context.fillRect(-13, -13, 26, 26);
     };
     //Creating a new display object
-    rect3 = new STL.CanvasDisplayObject(context);
+    rect3 = new STL.CanvasDisplayObject();
     rect3.name = 'Blue Rectangular';
 
     //Positioning and scaling the new object
@@ -77,7 +77,7 @@ var initialize = function() {
         context.fillRect(-13, -13, 26, 26);
     };
     //Creating a new display object
-    rect4 = new STL.CanvasDisplayObject(context);
+    rect4 = new STL.CanvasDisplayObject();
     rect4.name = 'Dark Green Rectangular';
 
     //Positioning and scaling the new object
@@ -90,7 +90,7 @@ var initialize = function() {
         context.fillRect(-13, -13, 26, 26);
     };
     //Creating a new display object
-    rect5 = new STL.CanvasDisplayObject(context);
+    rect5 = new STL.CanvasDisplayObject();
     rect5.name = 'Green Rectangular';
 
     //Positioning and scaling the new object
@@ -135,7 +135,7 @@ var draw = function() {
     rect5.rotation += 0.1;
 
     //Update the stage
-    stage.update();
+    stage.update(context);
 
 };
 initialize();
