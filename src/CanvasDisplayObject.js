@@ -8,8 +8,7 @@
 var STL                     = STL || {};
 STL.CanvasDisplayObject     = function() {
 
-    var _children           = [],
-    _alphaDefinedByUser     = 1;
+    var _children           = [];
 
     /**
      * Public members
@@ -23,6 +22,7 @@ STL.CanvasDisplayObject     = function() {
     this.scaleY             = 1;
     this.visible            = true;
     this.alpha              = 1;
+    this.extra              = {};
 
     /**
      * The parent object
@@ -100,10 +100,10 @@ STL.CanvasDisplayObject     = function() {
             ctx.save();
 
             //Translate Scale and Rotate
-            _ctx.translate(this.x, this.y);
-            _ctx.scale(this.scaleX,this.scaleY);
-            _ctx.rotate(this.rotation);
-            _ctx.globalAlpha = _ctx.globalAlpha * this.alpha;
+            ctx.translate(this.x, this.y);
+            ctx.scale(this.scaleX,this.scaleY);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = ctx.globalAlpha * this.alpha;
 
 
             this.draw();
