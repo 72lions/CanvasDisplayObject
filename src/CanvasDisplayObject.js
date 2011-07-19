@@ -100,21 +100,22 @@ STL.CanvasDisplayObject     = function() {
             ctx.save();
 
             //Translate Scale and Rotate
-            ctx.translate(this.x, this.y);
-            ctx.scale(this.scaleX,this.scaleY);
-            ctx.rotate(this.rotation);
-            ctx.globalAlpha = ctx.globalAlpha * this.alpha;
+            _ctx.translate(this.x, this.y);
+            _ctx.scale(this.scaleX,this.scaleY);
+            _ctx.rotate(this.rotation);
+            _ctx.globalAlpha = _ctx.globalAlpha * this.alpha;
+
 
             this.draw();
 
             //Invoke the update function for each child
-            var d = _children.length-1;
+            var d = 0;
 
-            while(d >= 0) {
+            while(d < _children.length) {
 
                 _children[d].update(ctx);
 
-                d--;
+                d++;
             }
 
             //Restore the translation, rotation
