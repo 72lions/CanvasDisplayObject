@@ -103,7 +103,7 @@ STL.CanvasDisplayObject     = function() {
             ctx.translate(this.x, this.y);
             ctx.scale(this.scaleX,this.scaleY);
             ctx.rotate(this.rotation);
-            ctx.globalAlpha = this.alpha;
+            ctx.globalAlpha = ctx.globalAlpha * this.alpha;
 
             this.draw();
 
