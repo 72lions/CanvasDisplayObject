@@ -89,7 +89,7 @@ STL.CanvasDisplayObject     = function() {
     };
     /**
      * Updates the object
-     * 
+     *
      * @param {CanvasContext} ctx The context on which everything will be drawn
      */
     this.update = function(ctx) {
