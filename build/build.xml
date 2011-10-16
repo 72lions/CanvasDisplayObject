@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="JS compressor" basedir="." default="main">
+
+	<property name="compressor.dir" value="lib/yuicompressor-2.4.4.jar"/>
+	<property name="antcontrib.dir" value="lib/ant-contrib.jar"/>
+
+	<property name="src.js.dir" value="${basedir}/../src"/>
+	<property name="dist.js.dir" value="${basedir}/../dist"/>
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${antcontrib.dir}"/>
+		</classpath>
+	</taskdef>
+
+	<property name="dist.merged.file.js" value="${dist.js.dir}/CanvasDisplayObject.merged.js"/>
+	<property name="dist.compressed.file.js" value="${dist.js.dir}/CanvasDisplayObject.merged.min.js" />
+
+	<!-- Merges all javascript files into one. Remember, order matters! -->
+	<target name="merge-global-js">
+		<concat destfile="${dist.merged.file.js}" fixlastline="yes" append="no">
+			<filelist dir="${src.js.dir}" files="
+				CanvasDisplayObject.js
+			"/>
+		</concat>
+	</target>
+
+
+	<!-- Comment out console.log commands from merged script -->
+	<target name="clean-merged-js" depends="merge-global-js" description="Comment out console.log lines">
+		<echo>Commenting out console.log lines</echo>
+		<replaceregexp file="${dist.merged.file.js}" match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" />
+	</target>
+
+
+	<!-- Compress the merged common javascript file -->
+	<target name="compress-global-js" depends="clean-merged-js">
+		<echo>${dist.merged.file.js} to ${dist.compressed.file.js}</echo>
+		<java jar="${compressor.dir}" fork="true">
+			<arg value="${dist.merged.file.js}"/>
+			 <arg line="--line-break"/>
+		  <arg line="4000"/>
+			<arg value="-o"/>
+			<arg value="${dist.compressed.file.js}"/>
+		</java>
+    </target>
+
+	<target name="clean-js">
+		<delete>
+			<fileset dir="${dist.js.dir}" includes="**/*"/>
+		</delete>
+	</target>
+
+	<!-- run all tasks -->
+	<target name="main" depends="clean-js, compress-global-js">
+    </target>
+
+</project>
