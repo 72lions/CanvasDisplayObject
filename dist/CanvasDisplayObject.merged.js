@@ -1,42 +1,40 @@
+var STL = STL || {};
 /**
- *
  * Simulates a display object just like in AS3
  *
+ * @module 72lions
+ * @class CanvasDisplayObject
  * @author Thodoris Tsiridis
+ * @version 1.0
  */
+STL.CanvasDisplayObject = function() {
 
-var STL                     = STL || {};
-STL.CanvasDisplayObject     = function() {
+    var _children = [];
 
-    var _children           = [];
-
-    /**
-     * Public members
-     */
-    this.name               = '';
-
-    this.x                  = 0;
-    this.y                  = 0;
-    this.rotation           = 0;
-    this.scaleX             = 1;
-    this.scaleY             = 1;
-    this.visible            = true;
-    this.alpha              = 1;
-    this.extra              = {};
+    this.name = '';
+    this.x = 0;
+    this.y  = 0;
+    this.rotation = 0;
+    this.scaleX = 1;
+    this.scaleY = 1;
+    this.visible = true;
+    this.alpha = 1;
+    this.extra = {};
 
     /**
-     * The parent object
-     */
-    this.parent             = null;
-
-    /**
-     * ---------------------------------
-     * PUBLIC FUNCTIONS
-     * ---------------------------------
+     * It is set to true the first time we get a popstate
      *
+     * @private
+     * @type ST.CanvasDisplayObject
+     * @default null
+     */
+    this.parent = null;
+
+    /**
      * Adds a child to the display object
      *
      * @param {CanvasDisplayObject} child The display object to add as a child
+     * @author Thodoris Tsiridis
      */
     this.addChild = function(child) {
 
@@ -64,6 +62,7 @@ STL.CanvasDisplayObject     = function() {
      * Removes a child
      *
      * @param {CanvasDisplayObject} child  The display object to remove
+     * @author Thodoris Tsiridis
      */
     this.removeChild = function(child) {
 
@@ -82,7 +81,8 @@ STL.CanvasDisplayObject     = function() {
     /**
      * Returns an array with all the children
      *
-     * @returns {[CanvasDisplayObject]} The array with all the children
+     * @returns {Array} The array with all the children
+     * @author Thodoris Tsiridis
      */
     this.getChildren = function() {
         return _children;
@@ -91,6 +91,7 @@ STL.CanvasDisplayObject     = function() {
      * Updates the object
      *
      * @param {CanvasContext} ctx The context on which everything will be drawn
+     * @author Thodoris Tsiridis
      */
     this.update = function(ctx) {
 
@@ -104,7 +105,6 @@ STL.CanvasDisplayObject     = function() {
             ctx.scale(this.scaleX,this.scaleY);
             ctx.rotate(this.rotation);
             ctx.globalAlpha = ctx.globalAlpha * this.alpha;
-
 
             this.draw();
 
@@ -126,6 +126,7 @@ STL.CanvasDisplayObject     = function() {
         }
     };
 };
+
 /**
  * Generic function for overwritting and adding the your code
  */

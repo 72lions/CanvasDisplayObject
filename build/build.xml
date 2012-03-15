@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="JS compressor" basedir="." default="main">
 
+<project name="JS and CSS compressor for 72lions" basedir="." default="main">
 	<property name="compressor.dir" value="lib/yuicompressor-2.4.4.jar"/>
 	<property name="antcontrib.dir" value="lib/ant-contrib.jar"/>
 
@@ -52,7 +52,7 @@
 	</target>
 
 	<!-- run all tasks -->
-	<target name="main" depends="clean-js, compress-global-js">
+	<target name="main" depends="clean-js, compress-global-js, merge-global-js">
     </target>
 
 </project>
