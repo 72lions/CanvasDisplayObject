@@ -10,12 +10,45 @@
 		<title>Solar System</title>
 		<meta name="description" content="Simulating a DisplayObject like in AS3" />
 		<meta name="author" content="Thodoris Tsiridis" />
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Lobster);
+            
+            body {
+              padding:0px; 
+              margin:0px; 
+              background-color:#000; 
+              background-image:url('http://experiments.72lions.com/CanvasDisplayList/solar-system/jsrb53o.png'); 
+            }
+            
+            #world {
+              position:absolute; 
+              top:50%;
+              left:50%;
+              margin-left:-450px; 
+              margin-top:-350px;
+            }
+            
+            #info {
+              border-radius: 8px;
+              padding:9px; 
+              position:absolute; 
+              top:5px; 
+              left:50%;
+              width: 200px;
+              text-align: center;
+              margin-left: -100px;
+              background-color:#000;
+              color:#fff; 
+              font-family: 'Lobster'; 
+              font-size: 28px;
+              z-index:100;
+            }            
+        </style>
 	</head>
 
-	<body style="padding:0px; margin:0px; background-color:#000; background-image:url('jsrb53o.png')">
-
-		<canvas id="world" style="position:absolute; top:50%;left:50%;margin-left:-450px; margin-top:-350px;"></canvas>
-		<div id="info" style="padding:9px; position:absolute; top:0px; left:0px; background-color:#000; color:#fff; font-family:Georgia; z-index:100">Example 03: Solar System</div>
+	<body>
+        <canvas id="world"></canvas>
+		<div id="info" style="">Solar System</div>
 		<script type="text/javascript" src="../../dist/CanvasDisplayObject.merged.min.js"></script>
 		<script type="text/javascript" src="solar-system.js"></script>
 	</body>
