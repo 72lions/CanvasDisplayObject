@@ -1,4 +1,4 @@
-Javascript library that simulates a Display List in Canvas.
+<h2>Javascript library for hierarchical trees in Canvas.</h2>
 <h2>Demo</h2>
 <p>
     Check the demo at <a href="http://cdpn.io/fBsKA" title="Solar System example" target="_blank">CodePen.io</a>
